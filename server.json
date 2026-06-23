@@ -1,0 +1,13 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "now.shiply/shiply",
+  "description": "Instant web hosting for AI agents. Publish a live site in one call, no account needed.",
+  "version": "1.0.0",
+  "websiteUrl": "https://shiply.now",
+  "remotes": [
+    {
+      "type": "streamable-http",
+      "url": "https://shiply.now/mcp"
+    }
+  ]
+}
