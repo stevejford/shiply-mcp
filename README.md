@@ -47,6 +47,18 @@ described in [llms.txt](https://shiply.now/llms.txt).
 The live tool list and schemas are always at
 [`/.well-known/mcp.json`](https://shiply.now/.well-known/mcp.json).
 
+## Use it as a skill
+
+A Claude/agent **skill** for shiply lives in [`shiply/SKILL.md`](shiply/SKILL.md) —
+it teaches an agent when and how to publish, host, and update sites via shiply
+(CLI, MCP, or raw HTTP). Install it into a coding agent with:
+
+```
+npx shiply-cli skill
+```
+
+The canonical copy is always served at https://shiply.now/skill.md.
+
 ## Links
 
 - Site: https://shiply.now
