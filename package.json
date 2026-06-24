@@ -1,0 +1,29 @@
+{
+  "name": "shiply-mcp",
+  "version": "1.0.0",
+  "description": "Local MCP server for shiply.now — publish a site to a live URL in one call. Wraps the public shiply REST API as MCP tools (no account needed to start).",
+  "type": "module",
+  "bin": {
+    "shiply-mcp": "./index.mjs"
+  },
+  "main": "./index.mjs",
+  "files": [
+    "index.mjs"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "shiply",
+    "web-hosting",
+    "deploy",
+    "static-site"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.29.0",
+    "zod": "^3.23.8"
+  }
+}

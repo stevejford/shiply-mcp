@@ -1,7 +1,10 @@
-# shiply is a hosted, remote MCP server — there is no local implementation to build.
-# This image bridges a stdio MCP client to the live streamable-HTTP endpoint, so the
-# server can be started and introspected locally (e.g. by Glama's checks, or by any
-# stdio-only MCP client). It simply proxies to the public https://shiply.now/mcp.
-FROM node:20-alpine
-RUN npm install -g mcp-remote@latest
-ENTRYPOINT ["mcp-remote", "https://shiply.now/mcp"]
+# Builds and runs the local shiply MCP server (stdio) — a real local server that
+# calls shiply's public REST API directly. Glama generates its own Dockerfile from
+# the admin config; this mirrors it for anyone building the repo directly.
+FROM node:20-slim
+WORKDIR /app
+COPY package.json package-lock.json* ./
+RUN npm install --omit=dev --no-audit --no-fund
+COPY index.mjs ./
+ENV NODE_ENV=production
+CMD ["node", "index.mjs"]

@@ -6,9 +6,11 @@ the whole site over the same MCP server: updates, custom domains, SSL, environme
 variables, site data, SQL databases, edge functions, lead capture, email, and a
 marketplace to sell the site it built.
 
-This repo is the public descriptor for the **hosted, remote** shiply MCP server.
-There is nothing to install or run — you connect to the live endpoint.
-Listed on the Official MCP Registry as **`now.shiply/shiply`**.
+The recommended way to use shiply is the **hosted, remote** MCP endpoint — connect
+to the live URL, nothing to run. This repo also ships a small **local stdio MCP
+server** (`npx shiply-mcp` / `node index.mjs`) that wraps shiply's public REST API
+directly (it is a real local server, not a proxy), for clients or hosts that prefer
+a local process. Listed on the Official MCP Registry as **`now.shiply/shiply`**.
 
 ## Connect
 
@@ -29,6 +31,27 @@ Add it to an MCP client (Claude Desktop, Cursor, Claude Code, etc.):
   }
 }
 ```
+
+### Local (stdio)
+
+Prefer a local process? Run the bundled server — it calls shiply's public REST API
+directly (no proxy to the hosted endpoint):
+
+```json
+{
+  "mcpServers": {
+    "shiply": {
+      "command": "npx",
+      "args": ["-y", "shiply-mcp"]
+    }
+  }
+}
+```
+
+Or clone this repo and run `npm install && node index.mjs`. Set `SHIPLY_API_KEY`
+(`shp_…`) for owned-site operations; `publish_site` works without it. Local tools:
+`publish_site`, `site_status`, `rollback_site`, `add_custom_domain`,
+`check_custom_domain`.
 
 ## Auth
 
